@@ -1,4 +1,5 @@
 let auth = require('../database/auth_queries') ;
+let {user_schema} = require('../database/schemas/user.schema') ;
 
 
 exports.login = async function(req, res, next) {                    ///     add validations !!!
@@ -11,24 +12,26 @@ exports.login = async function(req, res, next) {                    ///     add 
   } ; 
 
   exports.signup = (req, res) => {  
-        console.log('sign up func - userControler');
-        let params = req.params ;
+    console.log('sign up func - userControler');
+    let params = req.params ;
+    // console.log(user_schema.validate(name:params.name))
         let emailValid = false ;
         checkEmailValidity(params.email).then(bool => {emailValid = bool; console.log(bool)})
         if(
           checkNameValidity(params.name) &&
           checkPasswordValidity(params.password, params.passwordConfirm) &&
-          emailValid
+          checkEmailValidity(params.email)
           ){
             auth.setUser(params.name, params.password, params.email, params.alies).
-              then((user) => {
-                console.log('sign up func - updating the db');
-                res.status(200).send(user) ;
-              }).catch(err => console.log('error = ' ,err));
+              then(() => auth.getUser(params.email, params.password))
+              .then(user => res.status(200).send(user[0]))
+              .catch(err => console.log('error = ' ,err));
            }
            else{
-             console.log(emailValid);
-             req.status(200).send("details invalid!")
+            res.status(404).send() ;
+            console.log('name: ', checkNameValidity(params.name)) ;
+            console.log('pass: ', checkPasswordValidity(params.password, params.passwordConfirm)) ;
+            console.log('email: ', checkEmailValidity(params.email))
            }
   } 
   // check validations - start

@@ -1,7 +1,7 @@
 const db = require('./config');
 
 
-select_user_sql = 'SELECT name,date_of_joined, email FROM users where password = $1 and email = $2' ;
+select_user_sql = 'SELECT name,date_of_joined, email, id FROM users where password = $1 and email = $2' ;
 set_user_sql = `insert into users(name,date_of_joined, email, password, alies) VALUES($1, CURRENT_DATE, $2,$3, $4) ` ;
 getEmail = 'select email from users where email=$1' ;
 

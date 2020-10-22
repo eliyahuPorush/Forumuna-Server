@@ -1,0 +1,1 @@
+INSERT INTO answers ( user_id, post_id, content) VALUES (1, 37, 'answer from server...')
