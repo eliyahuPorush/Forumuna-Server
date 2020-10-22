@@ -1,6 +1,9 @@
 
 let postQueries = require('../database/queries')
-
+const json = {
+    answer: "my answer",
+    owner: "I am owner"
+}
 exports.addForum = (req,res) => {
     try{
         let newForum = req.body ;
@@ -36,6 +39,7 @@ exports.addAnswer = async (req,res) => {
 exports.getAnswers = async (req,res) => {
     postQueries.getAnswers(req.params.postId).then(data => {
         console.log('data: ', data);
-        res.status(200).send(data)
+        res.status(200).send(JSON.parse(json))
     })
+    
 }
