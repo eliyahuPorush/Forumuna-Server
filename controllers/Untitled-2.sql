@@ -1,0 +1,1 @@
+SELECT * FROM answers join posts on posts.id = answers.post_id WHERE answers.post_id = 1 ;
