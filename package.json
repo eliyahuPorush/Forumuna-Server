@@ -23,7 +23,8 @@
     "mysql": "^2.18.1",
     "node": "^8.10.0",
     "pg": "^8.3.3",
-    "pg-promise": "^10.6.1"
+    "pg-promise": "^10.6.1",
+    "http-errors": "^1.8.0"
   },
   "devDependencies": {
     "cors": "^2.8.5",
