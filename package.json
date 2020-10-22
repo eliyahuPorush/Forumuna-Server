@@ -4,24 +4,29 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "ejs": "^3.1.5",
+    "express": "4.16.2",
+    "firebase": "^7.24.0",
     "firebase-tools": "^8.13.1",
     "joi": "^17.2.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "node": "^8.10.0",
     "pg": "^8.3.3",
     "pg-promise": "^10.6.1"
   },
   "devDependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "4.16.2",
     "http-errors": "^1.8.0"
   }
 }
